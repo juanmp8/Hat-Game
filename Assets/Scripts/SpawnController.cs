@@ -14,21 +14,21 @@ public class SpawnController : MonoBehaviour
 
     void Start()
     {
-        InvokeRepeating("SpawnInvoke", 2.0f, Random.Range(2.0f, 3.0f));
+        InvokeRepeating("SpawnInvoke", 0f, Random.Range(2.0f, 3.0f));
     }
 
     private void Initialize() {
         screenWidth = Camera.main.ScreenToWorldPoint(new Vector2(Screen.safeArea.width, Screen.safeArea.height));
         Vector2 heightPosition = new Vector2(transform.position.x, Camera.main.orthographicSize + topDistance);
         transform.position = heightPosition;
-    }
+    } 
 
     private void SpawnInvoke() {
         StartCoroutine(Spawn());
     }
 
     private IEnumerator Spawn() {
-        yield return new WaitForSeconds(2.0f);
+        yield return new WaitForSeconds(0.5f);
         transform.position = new Vector2(Random.Range(-screenWidth.x + lateralMargin, screenWidth.x - lateralMargin), transform.position.y);
         GameObject tempBallPrefab = Instantiate(ballPrefab, transform.position, Quaternion.identity) as GameObject;
     }
