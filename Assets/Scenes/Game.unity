@@ -132,6 +132,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 848597098}
+  - component: {fileID: 848597099}
   m_Layer: 0
   m_Name: Game Controller
   m_TagString: Untagged
@@ -153,6 +154,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &848597099
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 848597097}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb052243bac31c9419ee5acae4afbd6a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentTime: 0
+  startedTime: 3
+  score: 0
 --- !u!1 &1107587966
 GameObject:
   m_ObjectHideFlags: 0
@@ -378,6 +394,10 @@ PrefabInstance:
     - target: {fileID: 4400491569772875118, guid: a79e2423b26808c45a00c691520d9d59, type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 4400491570840879026, guid: a79e2423b26808c45a00c691520d9d59, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4400491571450885939, guid: a79e2423b26808c45a00c691520d9d59, type: 3}
       propertyPath: m_IsTrigger
