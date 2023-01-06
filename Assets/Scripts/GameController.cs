@@ -8,26 +8,46 @@ public class GameController : MonoBehaviour
     [SerializeField] float startedTime;
     public int score;
     public bool gameStarted;
+
+    private UIController uiController;
     void Start()
     {
-        score = 0;
-        currentTime = startedTime;
-        gameStarted = true;
+        gameStarted = false;
+        uiController = FindObjectOfType<UIController>();    
     }
 
     private void Update() {
-        subtractTime();
+        
     }
 
-    void subtractTime() {
+    public void InvokeSubtractTime() {
+        InvokeRepeating("SubtractTime", 1f, 1f);
+    }
+
+    public void StartGame() {
+        score = 0;
+        currentTime = startedTime;
+        gameStarted = true;
+        InvokeSubtractTime();
+    }
+
+    public void BackMenu() {
+        score = 0;
+        currentTime = 0;
+        gameStarted = false;
+        CancelInvoke("SubtractTime");
+    }
+
+    void SubtractTime() {
         if (currentTime > 0f && gameStarted) {
-            currentTime -= Time.deltaTime;
-            float currentTimeint = Mathf.FloorToInt(currentTime);
-            Debug.Log(currentTimeint);
+            currentTime -= 1f;
         }
         else {
-            gameStarted= false; 
+            uiController.pnGameOver.SetActive(true);
+            uiController.pnGame.SetActive(false);
+            gameStarted = false;
             currentTime = 0f;
+            CancelInvoke("SubtractTime");
             return;
         }
 
